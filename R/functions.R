@@ -423,12 +423,17 @@ arena<-function(
 
     ### Rank-transform columns
     ranks<-apply(signatures, 2, data.table::frank, na.last="keep")
+    rownames(rank) <- rownames(signatures)
+    
     ### Assign a 0 to signature weights where the signature was NA
     sweights[is.na(ranks)]<-0
+    
     ### 0-1 bound ranks
     boundranks<-t(t(ranks)/(colSums(!is.na(signatures))+1))
+    
     ### Treat bound ranks as quantiles in a gaussian distribution (0=-Inf, 1=+Inf)
     gaussian <- qnorm(boundranks)
+    
     ### Deal with NAs
     gaussian[is.na(gaussian)]<-0
 
