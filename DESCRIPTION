@@ -26,6 +26,7 @@ RoxygenNote: 7.2.3
 Depends: R (>= 3.6)
 NeedsCompilation: no
 Imports:
+ data.table,
  dplyr,
  gplots,
  knitr,
