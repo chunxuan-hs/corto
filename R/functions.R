@@ -392,7 +392,8 @@ arena<-function(
 
     ### Remove small groups
     groups<-groups[sapply(groups,length)>=minsize]
-
+    if (length(groups) == 0) stop("(EE) Empty groups after minsize filtering!")
+    
     ### Treat single "signature"
     if (is.null(nrow(signatures))){
         signatures <- matrix(signatures, length(signatures), 1, dimnames=list(names(signatures), "sample1"))
@@ -421,7 +422,7 @@ arena<-function(
     rm(gweights)
 
     ### Rank-transform columns
-    ranks<-apply(signatures,2,rank,na.last="keep")
+    ranks<-apply(signatures, 2, data.table::frank, na.last="keep")
     ### Assign a 0 to signature weights where the signature was NA
     sweights[is.na(ranks)]<-0
     ### 0-1 bound ranks
