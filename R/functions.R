@@ -422,8 +422,8 @@ arena<-function(
     rm(gweights)
 
     ### Rank-transform columns
-    ranks<-apply(signatures, 2, data.table::frank, na.last="keep")
-    rownames(rank) <- rownames(signatures)
+    ranks <- apply(signatures, 2, data.table::frank, na.last="keep")
+    rownames(ranks) <- rownames(signatures)
     
     ### Assign a 0 to signature weights where the signature was NA
     sweights[is.na(ranks)]<-0
