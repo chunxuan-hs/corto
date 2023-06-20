@@ -9,7 +9,7 @@ install.packages("corto")
 Alternatively, you can install the _corto_ developmental version directly from Github:
 ```{r}
 library(devtools)
-install_github("federicogiorgi/corto")
+install_github("chunxuan-hs/corto")
 ```
 
 ![corto logo correlation tool](https://giorgilaborg.files.wordpress.com/2019/10/cortoicon.png)
